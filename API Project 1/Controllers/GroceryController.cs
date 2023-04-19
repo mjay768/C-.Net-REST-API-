@@ -43,6 +43,19 @@ public class GroceryController : ControllerBase
         }
         return NoContent();
     }
+
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id)
+    {
+        var grocery = GroceryService.Get(id);
+
+        if (grocery is null)
+            return NotFound();
+
+        GroceryService.Delete(id);
+
+        return NoContent();
+    }
     [HttpGet("{id}")]
     public ActionResult<Grocery> Get(int id)
     {
