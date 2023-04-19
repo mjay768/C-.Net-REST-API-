@@ -22,8 +22,11 @@ public class GroceryController : ControllerBase
     {
         var grocery = GroceryService.Get(id);
         if (grocery == null)
+        {
             Console.WriteLine("Item Not Found");
             return NotFound();
+        }
+            
 
         return grocery;
     }
