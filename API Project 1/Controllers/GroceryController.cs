@@ -16,6 +16,12 @@ public class GroceryController : ControllerBase
     [HttpGet]
     public ActionResult<List<Grocery>> GetAll() =>
         GroceryService.GetAll();
+    [HttpPost]
+    public IActionResult Create(Grocery grocery)
+    {
+        GroceryService.Add(grocery);
+        return CreatedAtAction(nameof(Get), new { id = grocery.Id }, grocery);
+    }
 
     [HttpGet("{id}")]
     public ActionResult<Grocery> Get(int id)
