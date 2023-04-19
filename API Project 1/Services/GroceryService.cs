@@ -4,7 +4,7 @@ namespace API_Project_1.Services
 	public class GroceryService
 	{
 		static List<Grocery> Groceries { get; }
-		static int nextId = 10;
+		static int nextId = 11;
 		static GroceryService()
 		{
 			Groceries = new List<Grocery>
