@@ -4,7 +4,7 @@ namespace API_Project_1.Services
 	public class GroceryService
 	{
 		static List<Grocery> Groceries { get; }
-		static int nextId = 4;
+		static int nextId = 10;
 		static GroceryService()
 		{
 			Groceries = new List<Grocery>
@@ -25,7 +25,7 @@ namespace API_Project_1.Services
 			Groceries.Add(grocery);
 		}
 
-		public static void Delete(int id)
+        public static void Delete(int id)
 		{
 			var grocery = Get(id);
 			if (grocery is null)
