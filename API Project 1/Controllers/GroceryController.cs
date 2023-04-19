@@ -23,6 +23,22 @@ public class GroceryController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = grocery.Id }, grocery);
     }
 
+    [HttpPut("{id}")]
+    public IActionResult Update(int id, Grocery grocery)
+    {
+        if (id != grocery.Id)
+            return BadRequest();
+
+        var existingGrocery = GroceryService.Get(id);
+        if (existingGrocery is null)
+
+            return NotFound();
+        
+
+        GroceryService.Update(grocery);
+
+        return NoContent();
+    }
     [HttpGet("{id}")]
     public ActionResult<Grocery> Get(int id)
     {
