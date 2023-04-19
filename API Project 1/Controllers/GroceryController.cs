@@ -16,12 +16,16 @@ public class GroceryController : ControllerBase
     [HttpGet]
     public ActionResult<List<Grocery>> GetAll() =>
         GroceryService.GetAll();
+
+  
+
     [HttpPost]
     public IActionResult Create(Grocery grocery)
     {
         GroceryService.Add(grocery);
         return CreatedAtAction(nameof(Get), new { id = grocery.Id }, grocery);
     }
+
 
     [HttpPut("{id}")]
     public IActionResult Update(int id, Grocery grocery)
@@ -31,12 +35,12 @@ public class GroceryController : ControllerBase
 
         var existingGrocery = GroceryService.Get(id);
         if (existingGrocery is null)
-
-            return NotFound();
         
+            return NotFound();
 
         GroceryService.Update(grocery);
-
+        { Console.WriteLine("updating is successfull");
+        }
         return NoContent();
     }
     [HttpGet("{id}")]
@@ -44,17 +48,14 @@ public class GroceryController : ControllerBase
     {
         var grocery = GroceryService.Get(id);
         if (grocery == null)
+        {
             Console.WriteLine("Item Not Found");
             return NotFound();
+        }
+
 
         return grocery;
     }
 
-    
+
 }
-
-
-
-
-
-
